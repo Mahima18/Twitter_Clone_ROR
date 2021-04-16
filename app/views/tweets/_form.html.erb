@@ -1,23 +1,44 @@
-<%= form_with(model: tweet, local: true) do |form| %>
-  <% if tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-4 offset-sm-4">
+    <div class="card">
+      <div class="card-header">
+        <h3>Add a New Tweet</h3>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <%= form_with(model: tweet, local: true) do |form| %>
+            <% if tweet.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
 
-      <ul>
-        <% tweet.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+                <ul>
+                  <% tweet.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <p>
+              <%= form.label :title %>
+              <br>
+              <%= form.text_field :title, :id => 'title', class: 'form-control', placeholder: 'Title' %>
+              <br>
+
+              <%= form.label :body %>
+              <br>
+              <%= form.text_area :body, :id => 'body', class: 'form-control', placeholder: 'Body(170 words)' %>
+            </p>
+
+            <%= form.submit 'Create Tweet', class: 'btn btn-dark' %>
+          <% end %>
+
+      </div>
     </div>
-  <% end %>
-
-  <p>
-    <%= form.label :body %>
-    <br>
-    <%= form.text_field :body, :id => 'body' %>
-  </p>
-
-  <div class="actions">
-    <%= form.submit %>
   </div>
-<% end %>
+</div>
+
+
+

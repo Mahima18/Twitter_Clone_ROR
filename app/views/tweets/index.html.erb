@@ -5,7 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Email</th>
+      <th>Content</th>
+      <th>Created </th>
+      <th colspan = 4>Share Tweet</th>
     </tr>
   </thead>
 
@@ -14,7 +17,13 @@
       <tr>
         <h3><td><%= tweet.user.email %></td></h3>
         <td><%= tweet.body %></td>
-        <td><%= tweet.created_at %></td>
+        <td>Created <%= time_ago_in_words(tweet.created_at) %></td>
+        <td>
+          <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+          <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+          <a href="https://www.whatsapp.com/"><i class="fa fa-whatsapp"></i></a>
+          <a href="https://www.gmail.com/"><i class="fa fa-envelope"></i></a>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +31,3 @@
 
 <br>
 
-<%= link_to 'New Tweet', new_tweet_path %>
