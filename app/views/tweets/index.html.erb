@@ -8,23 +8,28 @@
       <th>Email</th>
       <th>Content</th>
       <th>Created </th>
-      <th colspan = 4>Share Tweet</th>
+      <th colspan=2>Links</th>
+      <th>Share Tweet</th>
     </tr>
   </thead>
 
   <tbody>
     <% @tweets.each do |tweet| %>
-      <tr>
-        <h3><td><%= tweet.user.email %></td></h3>
-        <td><%= tweet.body %></td>
-        <td>Created <%= time_ago_in_words(tweet.created_at) %></td>
-        <td>
-          <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-          <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
-          <a href="https://www.whatsapp.com/"><i class="fa fa-whatsapp"></i></a>
-          <a href="https://www.gmail.com/"><i class="fa fa-envelope"></i></a>
-        </td>
-      </tr>
+      <% if current_user == tweet.user %>
+        <tr>
+          <h3><td><%= tweet.user.email %></td></h3>
+          <td><%= tweet.body %></td>
+          <td>Created <%= time_ago_in_words(tweet.created_at) %></td>
+          <td><%= link_to 'View Post', tweet %></td>
+          <td><%= link_to 'Delete Post', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>
+            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+            <a href="https://www.whatsapp.com/"><i class="fa fa-whatsapp"></i></a>
+            <a href="https://www.gmail.com/"><i class="fa fa-envelope"></i></a>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
