@@ -1,7 +1,8 @@
 <br>
 <br>
 <h3>Current users</h3>
-<%= link_to "Download Report as PDF", download_pdf_path(:format => 'pdf') %>
+<%= link_to "Download Report as PDF", show_path(:format => 'pdf') %>
+<hr>
 
 <% @normal_users.each do |normal| %>
 

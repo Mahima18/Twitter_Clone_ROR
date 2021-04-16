@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   		get :get_all_tweets
   	end
   end
+
+  get "users/download_pdf" => "users#download_pdf", :as => 'show'
 end

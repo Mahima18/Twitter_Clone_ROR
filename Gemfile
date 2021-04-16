@@ -58,3 +58,5 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'bootstrap', '~> 4.6'
 gem "font-awesome-rails"
 gem 'social-share-button'
+gem 'prawn'
+gem 'prawn-table'
