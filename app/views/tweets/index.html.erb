@@ -1,34 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tweets</h1>
+<% if current_user.admin == false %>
+  <h1>Tweets</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Content</th>
-      <th>Created </th>
-      <th colspan=2>Links</th>
-      <th>Share Tweet</th>
-    </tr>
-  </thead>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Content</th>
+        <th>Created </th>
+        <th colspan=2>Links</th>
+        <th>Share Tweet</th>
+      </tr>
+    </thead>
+<% end %>
 
   <tbody>
-    <% @tweets.each do |tweet| %>
-      <% if current_user == tweet.user %>
-        <tr>
-          <h3><td><%= tweet.user.email %></td></h3>
-          <td><%= tweet.body %></td>
-          <td>Created <%= time_ago_in_words(tweet.created_at) %></td>
-          <td><%= link_to 'View Post', tweet %></td>
-          <td><%= link_to 'Delete Post', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <td>
-            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
-            <a href="https://www.whatsapp.com/"><i class="fa fa-whatsapp"></i></a>
-            <a href="https://www.gmail.com/"><i class="fa fa-envelope"></i></a>
-          </td>
-        </tr>
+    <% if current_user.admin == true %>
+
+        <h2>Welcome, Admin!</h2>
+        <%= link_to 'View all users', normal_users_users_path %>
+
+    <% else %>
+      
+      <% @tweets.each do |tweet| %>
+
+        <% if current_user == tweet.user %>
+          <tr>
+            <h3><td><%= tweet.user.email %></td></h3>
+            <td><%= tweet.body %></td>
+            <td>Created <%= time_ago_in_words(tweet.created_at) %></td>
+            <td><%= link_to 'View Post', tweet %></td>
+            <td><%= link_to 'Delete Post', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td>
+              <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+              <a href="https://www.whatsapp.com/"><i class="fa fa-whatsapp"></i></a>
+              <a href="https://www.gmail.com/"><i class="fa fa-envelope"></i></a>
+            </td>
+          </tr>
+        <% end %>
+
       <% end %>
     <% end %>
   </tbody>

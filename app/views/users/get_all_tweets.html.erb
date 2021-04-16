@@ -1,0 +1,15 @@
+<br>
+<br>
+<h3> Tweets by <%= normal.email %> </h3>
+
+<% @get_all_tweets.each do |tweet| %>
+	
+	<p> 
+		<strong><%= tweet.title %></strong> || 
+		Content: <%= tweet.body %> ||
+		Created at: <%= normal.created_at %> ||
+		Last Updated: <%= normal.updated_at %> ||
+		<%= link_to 'View All Their Tweets', get_all_tweets_users_path normal %>
+	</p>
+
+<% end %>

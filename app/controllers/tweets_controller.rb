@@ -48,6 +48,10 @@ class TweetsController < ApplicationController
 		@tweet = current_user.tweets.find_by(id: params[:id])
 		redirect_to root_path, notice: "not authorized" if @tweet.nil?
 	end
+
+	def normal_users
+	   @normal_users = Tweet.user_id.where(:admin => false)
+	 end
 	 
 	private
 

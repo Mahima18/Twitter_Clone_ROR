@@ -1,0 +1,15 @@
+<br>
+<br>
+<h3>Current users</h3>
+<%= link_to "Download Report as PDF", download_pdf_path(:format => 'pdf') %>
+
+<% @normal_users.each do |normal| %>
+
+	<p> 
+		<strong><%= normal.email %></strong> || 
+		Created at: <%= normal.created_at %> ||
+		Last Updated: <%= normal.updated_at %>
+		<% link_to 'View All Their Tweets', get_all_tweets_users_path(normal) %>
+	</p>
+
+<% end %>

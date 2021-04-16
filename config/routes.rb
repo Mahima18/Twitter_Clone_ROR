@@ -6,5 +6,12 @@ Rails.application.routes.draw do
   resources :tweets
 
   resources :users do
+  	collection do
+  		get :normal_users
+  	end
+
+  	collection do
+  		get :get_all_tweets
+  	end
   end
 end
